@@ -48,6 +48,9 @@ int_video						EQU	10h
 	svc_video_set_cursor_pos		EQU	02h	
 	svc_video_write_char_tty		EQU	0Eh
 	svc_video_get_current_mode		EQU	0Fh
+int_keyboard					EQU 16h
+	svc_keyboard_read_next			EQU 00h
+	svc_keyboard_report_ready		EQU 01h
 int_bootstrap	EQU 19h
 int_dos			EQU 21h
 	svc_dos_print_str				EQU 09h
