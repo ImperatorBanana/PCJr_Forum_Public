@@ -10,7 +10,7 @@ IFDEF ROM
 HEADER: ; PC Jr Cartridge Header
 	cartridgeid			dw		0AA55h
 	cartridgelength		db		cart_rom_len/512	
-	jmp					START_FUNCTION					;; ENTRY POINT
+	jmp					PROGRAM					;; ENTRY POINT
 	headerend			db		00h
 ENDIF
 
