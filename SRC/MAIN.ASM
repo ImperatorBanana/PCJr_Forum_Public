@@ -1,4 +1,4 @@
-TITLE Skeleton for building COM OR ROM Program
+TITLE BOOT - Program to Boot Cartridge (call 18h)
 
 cart_rom_len EQU 2000h ; 8K
 
@@ -17,9 +17,7 @@ ENDIF
 	ORG 100h
 PROGRAM: ; Needed for COM to later terminate the program
 START_FUNCTION PROC NEAR
-	mov		al,'S' ; S for success!
-	mov		ah,0Eh ; BIOS Print TTY Character
-	int		10h ; BIOS Video Interrupt
+	int 18h
 IFDEF ROM
 	INF_LOOP: jmp INF_LOOP
 ELSE ;; COM
@@ -30,7 +28,7 @@ START_FUNCTION ENDP
 ORG	cart_rom_len - 16; 14(name) + 2(chksum) ;; TODO - can the assembler calculate this
 FOOTER: ; PCJr Cartridge Footer
 	;;								"0123456789ABCD"
-	cart_name					db	"Start Project$" ; 
+	cart_name					db	"Boot-Int18h  $" ; 
 	cart_chksum					dw	0000h ;; TODO - can the assembler calculate this?
 CODESEG ENDS
 
